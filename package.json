@@ -15,6 +15,6 @@
     "mongoose-auto-increment": "^5.0.1",
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
-    "secret": "^1.0.2"
+    "secret": "1.0.2"
   }
 }
