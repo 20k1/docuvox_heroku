@@ -18,13 +18,15 @@ router.post('/', function(req, res, next) {
     switch (intent.name) {
          // Create Document
         case "projects/docuagent-a0a53/agent/intents/46d6225f-d224-4e88-83ff-4a60b1db2659":
-            var first_name = parameters.first_name;
-            var last_name = parameters.last_name;
+            var first_name = "Sarah";
+            var last_name = "Connor";
+            var patient_number = 0;
             if (first_name !== undefined && first_name !== "" && last_name !== undefined && last_name !== "") {
                 console.log(Patient);
                 var patient = new Patient({
-                    first_name: first_name,
-                    last_name: last_name
+                    first_name: "Sarah",
+                    last_name: "Connor",
+                    patient_number: 0
                 });
                 console.log(patient);
                 patient.save((err, patient) => {
@@ -41,8 +43,8 @@ router.post('/', function(req, res, next) {
             break;
         // Select Patient
         case "projects/docuagent-a0a53/agent/intents/0dc4059a-3282-420c-9acb-2136f0d8d457":
-            var first_name = parameters.first_name;
-            var last_name = parameters.last_name;
+            var first_name = "Sarah";
+            var last_name = "Connor";
             var patient_number = 0;
             if ( patient_number !== undefined && patient_number !== "") {
                 Patient.findOne({patient_number: patient_number}, function(err, patient) {
