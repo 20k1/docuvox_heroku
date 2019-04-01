@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
     let parameters = df_request.queryResult.parameters;
     switch (intent.name) {
          // Create Document
-        case "projects/nurse-a5442/agent/intents/33ab5b5e-84c7-4501-8fc4-0a77bc45e55d":
+        case "projects/docuagent-a0a53/agent/intents/46d6225f-d224-4e88-83ff-4a60b1db2659":
             var first_name = parameters.first_name;
             var last_name = parameters.last_name;
             if (first_name !== undefined && first_name !== "" && last_name !== undefined && last_name !== "") {
@@ -40,10 +40,10 @@ router.post('/', function(req, res, next) {
             }
             break;
         // Select Patient
-        case "projects/nurse-a5442/agent/intents/64fbc502-f951-4182-a91b-68493d395b15":
+        case "projects/docuagent-a0a53/agent/intents/0dc4059a-3282-420c-9acb-2136f0d8d457":
             var first_name = parameters.first_name;
             var last_name = parameters.last_name;
-            var patient_number = parameters.patient_number;
+            var patient_number = 0;
             if ( patient_number !== undefined && patient_number !== "") {
                 Patient.findOne({patient_number: patient_number}, function(err, patient) {
                     if (err) return console.error(err);
@@ -64,11 +64,11 @@ router.post('/', function(req, res, next) {
             }
             break;
         // Deselect Patient
-        case "projects/nurse-a5442/agent/intents/7d61919f-5e12-4821-bf71-c7d52c363f09":
+        case "projects/docuagent-a0a53/agent/intents/3548eaea-1486-4249-8857-7c25f991cfd3":
             selectedPatient = undefined;
             break;
         // Medicine
-        case "projects/nurse-a5442/agent/intents/4f82e94b-84e0-430f-9984-fb4812eb4288":
+        case "projects/docuagent-a0a53/agent/intents/44b1eb91-4aad-4656-84b6-b0628f552365":
             if (selectedPatient !== undefined){
                 var medicine_list = parameters.medicine_list;
                 var date_time = parameters.date_time;
@@ -182,7 +182,7 @@ router.post('/', function(req, res, next) {
             }
             break;
         // Check
-        case "projects/nurse-a5442/agent/intents/40ace160-e414-4cd3-9156-8ac631fe483a":
+        case "projects/docuagent-a0a53/agent/intents/448cb76b-7d63-4dcf-a84a-07920a556070":
             if (selectedPatient !== undefined) {
                 var checklist = parameters.checklist;
                 var date_time = parameters.date_time;
@@ -227,7 +227,7 @@ router.post('/', function(req, res, next) {
             }
             break;
         // Vital
-        case "projects/nurse-a5442/agent/intents/2c9dab91-65e7-4451-b2f0-94474e640297":
+        case "projects/docuagent-a0a53/agent/intents/8b15226a-051a-4e29-8e81-19a5ff571199":
             if (selectedPatient !== undefined) {
                 var vital = parameters.vital;
                 var vital_value = parameters.vital_value;
