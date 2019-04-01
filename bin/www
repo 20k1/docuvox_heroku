@@ -25,8 +25,9 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /**
- * Connect Mongoose server.
+ * Connect Mongoose server. mongodb://<dbuser>:<dbpassword>@ds129536.mlab.com:29536/heroku_7dwx30ks
  */
+
 var uri =  'mongodb://'+ secret.mongodb_user + ':' + secret.mongodb_pass + '@' + secret.mongodb_host;
 mongoose.connect(uri);
 var db = mongoose.connection;
