@@ -149,10 +149,10 @@ router.post('/', function(req, res, next) {
                                 if (err) return console.error(err);
                                 if ( db_medicine !== null ){
                                     db_medicine.given = true;
-                                    db_medicine.save((err, medicine) => {
+                                    db_medicine.save((err, medicine2) => {
                                         if (err) return console.error(err);
                                         console.log("Medicine Given: ");
-                                        console.log(medicine);
+                                        console.log(medicine2);
                                     });
                                 } else {
                                     let medicine_object = new Medicine({
@@ -164,10 +164,10 @@ router.post('/', function(req, res, next) {
                                         time: date_time,
                                         time_slot: time_slot
                                     });
-                                    medicine_object.save((err, medicine) => {
+                                    medicine_object.save((err, medicine2) => {
                                         if (err) return console.error(err);
                                         console.log("Created Document for Medicine:");
-                                        console.log(medicine);
+                                        console.log(medicine2);
                                     });
                                 }
                             });
