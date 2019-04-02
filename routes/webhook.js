@@ -272,7 +272,7 @@ router.post('/', function(req, res, next) {
                 var vital_object = new Vital({
                     patient_number: selectedPatient.patient_number,
                     vital: vital,
-                    vital_value: vital_value,
+                    vital_value: vital_value.number,
                     time: date_time,
                 });
                 vital_object.save((err, vital_object) => {
