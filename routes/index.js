@@ -4,6 +4,7 @@ var Patient = require('../models/Patient');
 var CheckList = require('../models/CheckList');
 var Vital = require('../models/Vital');
 var Medicine = require('../models/Medicine');
+var Report = require('../models/Report');
 
 router.get('/patients', function(req, res, next) {
     Patient.find({}, function(err, db_patient_list) {
@@ -54,6 +55,14 @@ router.get('/patients', function(req, res, next) {
                             }
                             pat.medicines = medicines;
                         }
+                        
+                        
+						Report.find({patient_number: patient.patient_number}, function(err, db_reports){
+							if (err) return console.log(err);
+							if ( db_reports !== null && db_reports.length > 0) {
+								pat.reports = db_reports;
+							}
+                            
                         result.push(pat);
                         if ( result.length === db_patient_list.length) {
                             // console.log(result);
