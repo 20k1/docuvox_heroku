@@ -4,6 +4,7 @@ var Patient = require('../models/Patient');
 var Medicine = require('../models/Medicine');
 var CheckList = require('../models/CheckList');
 var Vital = require('../models/Vital');
+var Report = require('../models/Report');
 
 var selectedPatient;
 
@@ -228,6 +229,34 @@ router.post('/', function(req, res, next) {
                 console.log(text_response);
             }
             break;
+            
+            //Report
+            case "projects/docuagent-a0a53/agent/intents/f40cec01-a5c5-4d4d-b008-e0718360b83d":
+			if (selectedPatient !== undefined) {
+					var text = parameters.report;
+					console.log(parameters.report);
+					var date_time = parameters.date_time;
+					if ( date_time === undefined || date_time === "" ) {
+						var d = new Date();
+						date_time = d.toJSON();
+					}
+					var report_object = new Report({
+						patient_number: selectedPatient.patient_number,
+						text: parameters.report,
+						time: date_time
+					});
+					report_object.save((err, report_object) => {
+						if (err) return console.error(err);
+						console.log("Created Document for Report:");
+						console.log(report_object);
+					});
+				} else {
+					var text_response = "No patient selected.";
+					df_response.fulfillmentText = text_response;
+					console.log(text_response);
+				}
+				break;
+            
         // Vital
         case "projects/docuagent-a0a53/agent/intents/8b15226a-051a-4e29-8e81-19a5ff571199":
             if (selectedPatient !== undefined) {
