@@ -55,14 +55,11 @@ router.get('/patients', function(req, res, next) {
                             }
                             pat.medicines = medicines;
                         }
-                        
-                        
-						Report.find({patient_number: patient.patient_number}, function(err, db_reports){
-							if (err) return console.log(err);
-							if ( db_reports !== null && db_reports.length > 0) {
-								pat.reports = db_reports;
-							}
-                            
+                        Report.find({patient_number: patient.patient_number}, function(err, db_reports){
+				if (err) return console.log(err);
+				if ( db_reports !== null && db_reports.length > 0) {
+					pat.reports = db_reports;
+			}		
                         result.push(pat);
                         if ( result.length === db_patient_list.length) {
                             // console.log(result);
