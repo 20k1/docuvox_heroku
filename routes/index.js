@@ -65,6 +65,7 @@ router.get('/patients', function(req, res, next) {
                             // console.log(result);
                             res.send(result);
                         }
+			});
                     });
                 });
             });
